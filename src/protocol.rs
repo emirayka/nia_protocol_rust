@@ -3408,6 +3408,126 @@ impl ::protobuf::reflect::ProtobufValue for ActionExecuteNamedAction {
 }
 
 #[derive(PartialEq,Clone,Default)]
+pub struct ActionExecuteInterpreterValue {
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a ActionExecuteInterpreterValue {
+    fn default() -> &'a ActionExecuteInterpreterValue {
+        <ActionExecuteInterpreterValue as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl ActionExecuteInterpreterValue {
+    pub fn new() -> ActionExecuteInterpreterValue {
+        ::std::default::Default::default()
+    }
+}
+
+impl ::protobuf::Message for ActionExecuteInterpreterValue {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &dyn (::std::any::Any) {
+        self as &dyn (::std::any::Any)
+    }
+    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
+        self as &mut dyn (::std::any::Any)
+    }
+    fn into_any(self: Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> ActionExecuteInterpreterValue {
+        ActionExecuteInterpreterValue::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy::INIT;
+        unsafe {
+            descriptor.get(|| {
+                let fields = ::std::vec::Vec::new();
+                ::protobuf::reflect::MessageDescriptor::new_pb_name::<ActionExecuteInterpreterValue>(
+                    "ActionExecuteInterpreterValue",
+                    fields,
+                    file_descriptor_proto()
+                )
+            })
+        }
+    }
+
+    fn default_instance() -> &'static ActionExecuteInterpreterValue {
+        static mut instance: ::protobuf::lazy::Lazy<ActionExecuteInterpreterValue> = ::protobuf::lazy::Lazy::INIT;
+        unsafe {
+            instance.get(ActionExecuteInterpreterValue::new)
+        }
+    }
+}
+
+impl ::protobuf::Clear for ActionExecuteInterpreterValue {
+    fn clear(&mut self) {
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for ActionExecuteInterpreterValue {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for ActionExecuteInterpreterValue {
+    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef {
+        ::protobuf::reflect::ReflectValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
 pub struct Action {
     // message oneof groups
     pub action: ::std::option::Option<Action_oneof_action>,
@@ -3445,6 +3565,7 @@ pub enum Action_oneof_action {
     action_execute_function(ActionExecuteFunction),
     action_execute_os_command(ActionExecuteOSCommand),
     action_execute_named_action(ActionExecuteNamedAction),
+    action_execute_interpreter_value(ActionExecuteInterpreterValue),
 }
 
 impl Action {
@@ -4480,6 +4601,55 @@ impl Action {
             ActionExecuteNamedAction::new()
         }
     }
+
+    // .ActionExecuteInterpreterValue action_execute_interpreter_value = 22;
+
+
+    pub fn get_action_execute_interpreter_value(&self) -> &ActionExecuteInterpreterValue {
+        match self.action {
+            ::std::option::Option::Some(Action_oneof_action::action_execute_interpreter_value(ref v)) => v,
+            _ => ActionExecuteInterpreterValue::default_instance(),
+        }
+    }
+    pub fn clear_action_execute_interpreter_value(&mut self) {
+        self.action = ::std::option::Option::None;
+    }
+
+    pub fn has_action_execute_interpreter_value(&self) -> bool {
+        match self.action {
+            ::std::option::Option::Some(Action_oneof_action::action_execute_interpreter_value(..)) => true,
+            _ => false,
+        }
+    }
+
+    // Param is passed by value, moved
+    pub fn set_action_execute_interpreter_value(&mut self, v: ActionExecuteInterpreterValue) {
+        self.action = ::std::option::Option::Some(Action_oneof_action::action_execute_interpreter_value(v))
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_action_execute_interpreter_value(&mut self) -> &mut ActionExecuteInterpreterValue {
+        if let ::std::option::Option::Some(Action_oneof_action::action_execute_interpreter_value(_)) = self.action {
+        } else {
+            self.action = ::std::option::Option::Some(Action_oneof_action::action_execute_interpreter_value(ActionExecuteInterpreterValue::new()));
+        }
+        match self.action {
+            ::std::option::Option::Some(Action_oneof_action::action_execute_interpreter_value(ref mut v)) => v,
+            _ => panic!(),
+        }
+    }
+
+    // Take field
+    pub fn take_action_execute_interpreter_value(&mut self) -> ActionExecuteInterpreterValue {
+        if self.has_action_execute_interpreter_value() {
+            match self.action.take() {
+                ::std::option::Option::Some(Action_oneof_action::action_execute_interpreter_value(v)) => v,
+                _ => panic!(),
+            }
+        } else {
+            ActionExecuteInterpreterValue::new()
+        }
+    }
 }
 
 impl ::protobuf::Message for Action {
@@ -4585,6 +4755,11 @@ impl ::protobuf::Message for Action {
             }
         }
         if let Some(Action_oneof_action::action_execute_named_action(ref v)) = self.action {
+            if !v.is_initialized() {
+                return false;
+            }
+        }
+        if let Some(Action_oneof_action::action_execute_interpreter_value(ref v)) = self.action {
             if !v.is_initialized() {
                 return false;
             }
@@ -4722,6 +4897,12 @@ impl ::protobuf::Message for Action {
                     }
                     self.action = ::std::option::Option::Some(Action_oneof_action::action_execute_named_action(is.read_message()?));
                 },
+                22 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.action = ::std::option::Option::Some(Action_oneof_action::action_execute_interpreter_value(is.read_message()?));
+                },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
                 },
@@ -4817,6 +4998,10 @@ impl ::protobuf::Message for Action {
                     my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
                 },
                 &Action_oneof_action::action_execute_named_action(ref v) => {
+                    let len = v.compute_size();
+                    my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+                },
+                &Action_oneof_action::action_execute_interpreter_value(ref v) => {
                     let len = v.compute_size();
                     my_size += 2 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
                 },
@@ -4932,6 +5117,11 @@ impl ::protobuf::Message for Action {
                 },
                 &Action_oneof_action::action_execute_named_action(ref v) => {
                     os.write_tag(21, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+                    os.write_raw_varint32(v.get_cached_size())?;
+                    v.write_to_with_cached_sizes(os)?;
+                },
+                &Action_oneof_action::action_execute_interpreter_value(ref v) => {
+                    os.write_tag(22, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
                 },
@@ -5081,6 +5271,11 @@ impl ::protobuf::Message for Action {
                     Action::has_action_execute_named_action,
                     Action::get_action_execute_named_action,
                 ));
+                fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, ActionExecuteInterpreterValue>(
+                    "action_execute_interpreter_value",
+                    Action::has_action_execute_interpreter_value,
+                    Action::get_action_execute_interpreter_value,
+                ));
                 ::protobuf::reflect::MessageDescriptor::new_pb_name::<Action>(
                     "Action",
                     fields,
@@ -5100,6 +5295,7 @@ impl ::protobuf::Message for Action {
 
 impl ::protobuf::Clear for Action {
     fn clear(&mut self) {
+        self.action = ::std::option::Option::None;
         self.action = ::std::option::Option::None;
         self.action = ::std::option::Option::None;
         self.action = ::std::option::Option::None;
@@ -31152,315 +31348,318 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \"<\n\x15ActionExecuteFunction\x12#\n\rfunction_name\x18\x01\x20\x01(\tR\
     \x0cfunctionName\"7\n\x16ActionExecuteOSCommand\x12\x1d\n\nos_command\
     \x18\x01\x20\x01(\tR\tosCommand\";\n\x18ActionExecuteNamedAction\x12\x1f\
-    \n\x0baction_name\x18\x01\x20\x01(\tR\nactionName\"\x83\r\n\x06Action\
-    \x12;\n\x10action_key_press\x18\x01\x20\x01(\x0b2\x0f.ActionKeyPressH\0R\
-    \x0eactionKeyPress\x12;\n\x10action_key_click\x18\x02\x20\x01(\x0b2\x0f.\
-    ActionKeyClickH\0R\x0eactionKeyClick\x12A\n\x12action_key_release\x18\
-    \x03\x20\x01(\x0b2\x11.ActionKeyReleaseH\0R\x10actionKeyRelease\x12T\n\
-    \x19action_mouse_button_press\x18\x04\x20\x01(\x0b2\x17.ActionMouseButto\
-    nPressH\0R\x16actionMouseButtonPress\x12T\n\x19action_mouse_button_click\
-    \x18\x05\x20\x01(\x0b2\x17.ActionMouseButtonClickH\0R\x16actionMouseButt\
-    onClick\x12Z\n\x1baction_mouse_button_release\x18\x06\x20\x01(\x0b2\x19.\
-    ActionMouseButtonReleaseH\0R\x18actionMouseButtonRelease\x12H\n\x15actio\
-    n_text_key_click\x18\x07\x20\x01(\x0b2\x13.ActionTextKeyClickH\0R\x12act\
-    ionTextKeyClick\x12N\n\x17action_number_key_click\x18\x08\x20\x01(\x0b2\
-    \x15.ActionNumberKeyClickH\0R\x14actionNumberKeyClick\x12T\n\x19action_f\
-    unction_key_click\x18\t\x20\x01(\x0b2\x17.ActionFunctionKeyClickH\0R\x16\
-    actionFunctionKeyClick\x12Q\n\x18action_control_key_click\x18\n\x20\x01(\
-    \x0b2\x16.ActionControlKeyClickH\0R\x15actionControlKeyClick\x12B\n\x13a\
-    ction_kp_key_click\x18\x0b\x20\x01(\x0b2\x11.ActionKPKeyClickH\0R\x10act\
-    ionKpKeyClick\x12Z\n\x1baction_multimedia_key_click\x18\x0c\x20\x01(\x0b\
-    2\x19.ActionMultimediaKeyClickH\0R\x18actionMultimediaKeyClick\x12^\n\
-    \x1daction_mouse_button_key_click\x18\r\x20\x01(\x0b2\x1a.ActionMouseBut\
-    tonKeyClickH\0R\x19actionMouseButtonKeyClick\x12W\n\x1aaction_mouse_rela\
-    tive_move\x18\x0e\x20\x01(\x0b2\x18.ActionMouseRelativeMoveH\0R\x17actio\
-    nMouseRelativeMove\x12W\n\x1aaction_mouse_absolute_move\x18\x0f\x20\x01(\
-    \x0b2\x18.ActionMouseAbsoluteMoveH\0R\x17actionMouseAbsoluteMove\x12;\n\
-    \x10action_text_type\x18\x10\x20\x01(\x0b2\x0f.ActionTextTypeH\0R\x0eact\
-    ionTextType\x12.\n\x0baction_wait\x18\x11\x20\x01(\x0b2\x0b.ActionWaitH\
-    \0R\nactionWait\x12D\n\x13action_execute_code\x18\x12\x20\x01(\x0b2\x12.\
-    ActionExecuteCodeH\0R\x11actionExecuteCode\x12P\n\x17action_execute_func\
-    tion\x18\x13\x20\x01(\x0b2\x16.ActionExecuteFunctionH\0R\x15actionExecut\
-    eFunction\x12T\n\x19action_execute_os_command\x18\x14\x20\x01(\x0b2\x17.\
-    ActionExecuteOSCommandH\0R\x16actionExecuteOsCommand\x12Z\n\x1baction_ex\
-    ecute_named_action\x18\x15\x20\x01(\x0b2\x19.ActionExecuteNamedActionH\0\
-    R\x18actionExecuteNamedActionB\x08\n\x06action\"O\n\x0bNamedAction\x12\
-    \x1f\n\x0baction_name\x18\x01\x20\x01(\tR\nactionName\x12\x1f\n\x06actio\
-    n\x18\x02\x20\x01(\x0b2\x07.ActionR\x06action\"/\n\nActionList\x12!\n\
-    \x07actions\x18\x01\x20\x03(\x0b2\x07.ActionR\x07actions\"!\n\x04Key1\
-    \x12\x19\n\x08key_code\x18\x01\x20\x01(\x05R\x07keyCode\">\n\x04Key2\x12\
-    \x1b\n\tdevice_id\x18\x01\x20\x01(\x05R\x08deviceId\x12\x19\n\x08key_cod\
-    e\x18\x02\x20\x01(\x05R\x07keyCode\"H\n\x03Key\x12\x1c\n\x05key_1\x18\
-    \x01\x20\x01(\x0b2\x05.Key1H\0R\x04key1\x12\x1c\n\x05key_2\x18\x02\x20\
-    \x01(\x0b2\x05.Key2H\0R\x04key2B\x05\n\x03key\"C\n\x13ModifierDescriptio\
-    n\x12\x16\n\x03key\x18\x01\x20\x01(\x0b2\x04.KeyR\x03key\x12\x14\n\x05al\
-    ias\x18\x02\x20\x01(\tR\x05alias\"W\n\x08KeyChord\x12\"\n\tmodifiers\x18\
-    \x01\x20\x03(\x0b2\x04.KeyR\tmodifiers\x12'\n\x0cordinary_key\x18\x02\
-    \x20\x01(\x0b2\x04.KeyR\x0bordinaryKey\"T\n\x07Mapping\x12(\n\nkey_chord\
-    s\x18\x01\x20\x03(\x0b2\t.KeyChordR\tkeyChords\x12\x1f\n\x06action\x18\
-    \x02\x20\x01(\x0b2\x07.ActionR\x06action\"u\n\x0eKeyDescription\x12\x0c\
-    \n\x01x\x18\x01\x20\x01(\x05R\x01x\x12\x0c\n\x01y\x18\x02\x20\x01(\x05R\
-    \x01y\x12\x14\n\x05width\x18\x03\x20\x01(\x05R\x05width\x12\x16\n\x06hei\
-    ght\x18\x04\x20\x01(\x05R\x06height\x12\x19\n\x08key_code\x18\x05\x20\
-    \x01(\x05R\x07keyCode\"\x91\x01\n\x0bDeviceModel\x12:\n\x10key_descripti\
-    ons\x18\x01\x20\x03(\x0b2\x0f.KeyDescriptionR\x0fkeyDescriptions\x12!\n\
-    \x0cdevice_width\x18\x02\x20\x01(\x05R\x0bdeviceWidth\x12#\n\rdevice_hei\
-    ght\x18\x03\x20\x01(\x05R\x0cdeviceHeight\"\xb6\x01\n\nDeviceInfo\x12\
-    \x1b\n\tdevice_id\x18\x01\x20\x01(\x05R\x08deviceId\x12\x18\n\x07defined\
-    \x18\x02\x20\x01(\x08R\x07defined\x12\x1f\n\x0bdevice_path\x18\x03\x20\
-    \x01(\tR\ndevicePath\x12\x1f\n\x0bdevice_name\x18\x04\x20\x01(\tR\ndevic\
-    eName\x12/\n\x0cdevice_model\x18\x05\x20\x01(\x0b2\x0c.DeviceModelR\x0bd\
-    eviceModel\"\x12\n\x10HandshakeRequest\"\x8b\x03\n\x11HandshakeResponse\
-    \x12I\n\x0esuccess_result\x18\x01\x20\x01(\x0b2\x20.HandshakeResponse.Su\
-    ccessResultH\0R\rsuccessResult\x12C\n\x0cerror_result\x18\x02\x20\x01(\
-    \x0b2\x1e.HandshakeResponse.ErrorResultH\0R\x0berrorResult\x12I\n\x0efai\
-    lure_result\x18\x03\x20\x01(\x0b2\x20.HandshakeResponse.FailureResultH\0\
-    R\rfailureResult\x1a=\n\rSuccessResult\x12\x18\n\x07version\x18\x01\x20\
-    \x01(\tR\x07version\x12\x12\n\x04info\x18\x02\x20\x01(\tR\x04info\x1a'\n\
-    \x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\
-    \n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\
-    \x08\n\x06result\"\x13\n\x11GetDevicesRequest\"\x91\x03\n\x12GetDevicesR\
-    esponse\x12J\n\x0esuccess_result\x18\x01\x20\x01(\x0b2!.GetDevicesRespon\
-    se.SuccessResultH\0R\rsuccessResult\x12D\n\x0cerror_result\x18\x02\x20\
-    \x01(\x0b2\x1f.GetDevicesResponse.ErrorResultH\0R\x0berrorResult\x12J\n\
-    \x0efailure_result\x18\x03\x20\x01(\x0b2!.GetDevicesResponse.FailureResu\
-    ltH\0R\rfailureResult\x1a?\n\rSuccessResult\x12.\n\x0cdevices_info\x18\
-    \x01\x20\x03(\x0b2\x0b.DeviceInfoR\x0bdevicesInfo\x1a'\n\x0bErrorResult\
-    \x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResu\
-    lt\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\
-    \"(\n\x12ExecuteCodeRequest\x12\x12\n\x04code\x18\x01\x20\x01(\tR\x04cod\
-    e\"\xff\x02\n\x13ExecuteCodeResponse\x12K\n\x0esuccess_result\x18\x01\
-    \x20\x01(\x0b2\".ExecuteCodeResponse.SuccessResultH\0R\rsuccessResult\
-    \x12E\n\x0cerror_result\x18\x02\x20\x01(\x0b2\x20.ExecuteCodeResponse.Er\
-    rorResultH\0R\x0berrorResult\x12K\n\x0efailure_result\x18\x03\x20\x01(\
-    \x0b2\".ExecuteCodeResponse.FailureResultH\0R\rfailureResult\x1a)\n\rSuc\
-    cessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\
-    \x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\
-    \n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\
-    \x08\n\x06result\"2\n\x13DefineDeviceRequest\x12\x1b\n\tdevice_id\x18\
-    \x01\x20\x01(\x05R\x08deviceId\"\x83\x03\n\x14DefineDeviceResponse\x12L\
-    \n\x0esuccess_result\x18\x01\x20\x01(\x0b2#.DefineDeviceResponse.Success\
-    ResultH\0R\rsuccessResult\x12F\n\x0cerror_result\x18\x02\x20\x01(\x0b2!.\
-    DefineDeviceResponse.ErrorResultH\0R\x0berrorResult\x12L\n\x0efailure_re\
-    sult\x18\x03\x20\x01(\x0b2#.DefineDeviceResponse.FailureResultH\0R\rfail\
-    ureResult\x1a)\n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\
-    \x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\
-    \tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\
-    \x01(\tR\x07messageB\x08\n\x06result\"<\n\x19RemoveDeviceByPathRequest\
-    \x12\x1f\n\x0bdevice_path\x18\x01\x20\x01(\tR\ndevicePath\"\x9b\x03\n\
-    \x1aRemoveDeviceByPathResponse\x12R\n\x0esuccess_result\x18\x01\x20\x01(\
-    \x0b2).RemoveDeviceByPathResponse.SuccessResultH\0R\rsuccessResult\x12L\
-    \n\x0cerror_result\x18\x02\x20\x01(\x0b2'.RemoveDeviceByPathResponse.Err\
-    orResultH\0R\x0berrorResult\x12R\n\x0efailure_result\x18\x03\x20\x01(\
-    \x0b2).RemoveDeviceByPathResponse.FailureResultH\0R\rfailureResult\x1a)\
-    \n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\
-    \x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messa\
-    ge\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07mes\
-    sageB\x08\n\x06result\"<\n\x19RemoveDeviceByNameRequest\x12\x1f\n\x0bdev\
-    ice_name\x18\x01\x20\x01(\tR\ndeviceName\"\x9b\x03\n\x1aRemoveDeviceByNa\
-    meResponse\x12R\n\x0esuccess_result\x18\x01\x20\x01(\x0b2).RemoveDeviceB\
-    yNameResponse.SuccessResultH\0R\rsuccessResult\x12L\n\x0cerror_result\
-    \x18\x02\x20\x01(\x0b2'.RemoveDeviceByNameResponse.ErrorResultH\0R\x0ber\
-    rorResult\x12R\n\x0efailure_result\x18\x03\x20\x01(\x0b2).RemoveDeviceBy\
-    NameResponse.FailureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\
+    \n\x0baction_name\x18\x01\x20\x01(\tR\nactionName\"\x1f\n\x1dActionExecu\
+    teInterpreterValue\"\xee\r\n\x06Action\x12;\n\x10action_key_press\x18\
+    \x01\x20\x01(\x0b2\x0f.ActionKeyPressH\0R\x0eactionKeyPress\x12;\n\x10ac\
+    tion_key_click\x18\x02\x20\x01(\x0b2\x0f.ActionKeyClickH\0R\x0eactionKey\
+    Click\x12A\n\x12action_key_release\x18\x03\x20\x01(\x0b2\x11.ActionKeyRe\
+    leaseH\0R\x10actionKeyRelease\x12T\n\x19action_mouse_button_press\x18\
+    \x04\x20\x01(\x0b2\x17.ActionMouseButtonPressH\0R\x16actionMouseButtonPr\
+    ess\x12T\n\x19action_mouse_button_click\x18\x05\x20\x01(\x0b2\x17.Action\
+    MouseButtonClickH\0R\x16actionMouseButtonClick\x12Z\n\x1baction_mouse_bu\
+    tton_release\x18\x06\x20\x01(\x0b2\x19.ActionMouseButtonReleaseH\0R\x18a\
+    ctionMouseButtonRelease\x12H\n\x15action_text_key_click\x18\x07\x20\x01(\
+    \x0b2\x13.ActionTextKeyClickH\0R\x12actionTextKeyClick\x12N\n\x17action_\
+    number_key_click\x18\x08\x20\x01(\x0b2\x15.ActionNumberKeyClickH\0R\x14a\
+    ctionNumberKeyClick\x12T\n\x19action_function_key_click\x18\t\x20\x01(\
+    \x0b2\x17.ActionFunctionKeyClickH\0R\x16actionFunctionKeyClick\x12Q\n\
+    \x18action_control_key_click\x18\n\x20\x01(\x0b2\x16.ActionControlKeyCli\
+    ckH\0R\x15actionControlKeyClick\x12B\n\x13action_kp_key_click\x18\x0b\
+    \x20\x01(\x0b2\x11.ActionKPKeyClickH\0R\x10actionKpKeyClick\x12Z\n\x1bac\
+    tion_multimedia_key_click\x18\x0c\x20\x01(\x0b2\x19.ActionMultimediaKeyC\
+    lickH\0R\x18actionMultimediaKeyClick\x12^\n\x1daction_mouse_button_key_c\
+    lick\x18\r\x20\x01(\x0b2\x1a.ActionMouseButtonKeyClickH\0R\x19actionMous\
+    eButtonKeyClick\x12W\n\x1aaction_mouse_relative_move\x18\x0e\x20\x01(\
+    \x0b2\x18.ActionMouseRelativeMoveH\0R\x17actionMouseRelativeMove\x12W\n\
+    \x1aaction_mouse_absolute_move\x18\x0f\x20\x01(\x0b2\x18.ActionMouseAbso\
+    luteMoveH\0R\x17actionMouseAbsoluteMove\x12;\n\x10action_text_type\x18\
+    \x10\x20\x01(\x0b2\x0f.ActionTextTypeH\0R\x0eactionTextType\x12.\n\x0bac\
+    tion_wait\x18\x11\x20\x01(\x0b2\x0b.ActionWaitH\0R\nactionWait\x12D\n\
+    \x13action_execute_code\x18\x12\x20\x01(\x0b2\x12.ActionExecuteCodeH\0R\
+    \x11actionExecuteCode\x12P\n\x17action_execute_function\x18\x13\x20\x01(\
+    \x0b2\x16.ActionExecuteFunctionH\0R\x15actionExecuteFunction\x12T\n\x19a\
+    ction_execute_os_command\x18\x14\x20\x01(\x0b2\x17.ActionExecuteOSComman\
+    dH\0R\x16actionExecuteOsCommand\x12Z\n\x1baction_execute_named_action\
+    \x18\x15\x20\x01(\x0b2\x19.ActionExecuteNamedActionH\0R\x18actionExecute\
+    NamedAction\x12i\n\x20action_execute_interpreter_value\x18\x16\x20\x01(\
+    \x0b2\x1e.ActionExecuteInterpreterValueH\0R\x1dactionExecuteInterpreterV\
+    alueB\x08\n\x06action\"O\n\x0bNamedAction\x12\x1f\n\x0baction_name\x18\
+    \x01\x20\x01(\tR\nactionName\x12\x1f\n\x06action\x18\x02\x20\x01(\x0b2\
+    \x07.ActionR\x06action\"/\n\nActionList\x12!\n\x07actions\x18\x01\x20\
+    \x03(\x0b2\x07.ActionR\x07actions\"!\n\x04Key1\x12\x19\n\x08key_code\x18\
+    \x01\x20\x01(\x05R\x07keyCode\">\n\x04Key2\x12\x1b\n\tdevice_id\x18\x01\
+    \x20\x01(\x05R\x08deviceId\x12\x19\n\x08key_code\x18\x02\x20\x01(\x05R\
+    \x07keyCode\"H\n\x03Key\x12\x1c\n\x05key_1\x18\x01\x20\x01(\x0b2\x05.Key\
+    1H\0R\x04key1\x12\x1c\n\x05key_2\x18\x02\x20\x01(\x0b2\x05.Key2H\0R\x04k\
+    ey2B\x05\n\x03key\"C\n\x13ModifierDescription\x12\x16\n\x03key\x18\x01\
+    \x20\x01(\x0b2\x04.KeyR\x03key\x12\x14\n\x05alias\x18\x02\x20\x01(\tR\
+    \x05alias\"W\n\x08KeyChord\x12\"\n\tmodifiers\x18\x01\x20\x03(\x0b2\x04.\
+    KeyR\tmodifiers\x12'\n\x0cordinary_key\x18\x02\x20\x01(\x0b2\x04.KeyR\
+    \x0bordinaryKey\"T\n\x07Mapping\x12(\n\nkey_chords\x18\x01\x20\x03(\x0b2\
+    \t.KeyChordR\tkeyChords\x12\x1f\n\x06action\x18\x02\x20\x01(\x0b2\x07.Ac\
+    tionR\x06action\"u\n\x0eKeyDescription\x12\x0c\n\x01x\x18\x01\x20\x01(\
+    \x05R\x01x\x12\x0c\n\x01y\x18\x02\x20\x01(\x05R\x01y\x12\x14\n\x05width\
+    \x18\x03\x20\x01(\x05R\x05width\x12\x16\n\x06height\x18\x04\x20\x01(\x05\
+    R\x06height\x12\x19\n\x08key_code\x18\x05\x20\x01(\x05R\x07keyCode\"\x91\
+    \x01\n\x0bDeviceModel\x12:\n\x10key_descriptions\x18\x01\x20\x03(\x0b2\
+    \x0f.KeyDescriptionR\x0fkeyDescriptions\x12!\n\x0cdevice_width\x18\x02\
+    \x20\x01(\x05R\x0bdeviceWidth\x12#\n\rdevice_height\x18\x03\x20\x01(\x05\
+    R\x0cdeviceHeight\"\xb6\x01\n\nDeviceInfo\x12\x1b\n\tdevice_id\x18\x01\
+    \x20\x01(\x05R\x08deviceId\x12\x18\n\x07defined\x18\x02\x20\x01(\x08R\
+    \x07defined\x12\x1f\n\x0bdevice_path\x18\x03\x20\x01(\tR\ndevicePath\x12\
+    \x1f\n\x0bdevice_name\x18\x04\x20\x01(\tR\ndeviceName\x12/\n\x0cdevice_m\
+    odel\x18\x05\x20\x01(\x0b2\x0c.DeviceModelR\x0bdeviceModel\"\x12\n\x10Ha\
+    ndshakeRequest\"\x8b\x03\n\x11HandshakeResponse\x12I\n\x0esuccess_result\
+    \x18\x01\x20\x01(\x0b2\x20.HandshakeResponse.SuccessResultH\0R\rsuccessR\
+    esult\x12C\n\x0cerror_result\x18\x02\x20\x01(\x0b2\x1e.HandshakeResponse\
+    .ErrorResultH\0R\x0berrorResult\x12I\n\x0efailure_result\x18\x03\x20\x01\
+    (\x0b2\x20.HandshakeResponse.FailureResultH\0R\rfailureResult\x1a=\n\rSu\
+    ccessResult\x12\x18\n\x07version\x18\x01\x20\x01(\tR\x07version\x12\x12\
+    \n\x04info\x18\x02\x20\x01(\tR\x04info\x1a'\n\x0bErrorResult\x12\x18\n\
+    \x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\
+    \n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"\x13\n\
+    \x11GetDevicesRequest\"\x91\x03\n\x12GetDevicesResponse\x12J\n\x0esucces\
+    s_result\x18\x01\x20\x01(\x0b2!.GetDevicesResponse.SuccessResultH\0R\rsu\
+    ccessResult\x12D\n\x0cerror_result\x18\x02\x20\x01(\x0b2\x1f.GetDevicesR\
+    esponse.ErrorResultH\0R\x0berrorResult\x12J\n\x0efailure_result\x18\x03\
+    \x20\x01(\x0b2!.GetDevicesResponse.FailureResultH\0R\rfailureResult\x1a?\
+    \n\rSuccessResult\x12.\n\x0cdevices_info\x18\x01\x20\x03(\x0b2\x0b.Devic\
+    eInfoR\x0bdevicesInfo\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\
+    \x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\
+    \x01\x20\x01(\tR\x07messageB\x08\n\x06result\"(\n\x12ExecuteCodeRequest\
+    \x12\x12\n\x04code\x18\x01\x20\x01(\tR\x04code\"\xff\x02\n\x13ExecuteCod\
+    eResponse\x12K\n\x0esuccess_result\x18\x01\x20\x01(\x0b2\".ExecuteCodeRe\
+    sponse.SuccessResultH\0R\rsuccessResult\x12E\n\x0cerror_result\x18\x02\
+    \x20\x01(\x0b2\x20.ExecuteCodeResponse.ErrorResultH\0R\x0berrorResult\
+    \x12K\n\x0efailure_result\x18\x03\x20\x01(\x0b2\".ExecuteCodeResponse.Fa\
+    ilureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\x18\n\x07messag\
+    e\x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07mess\
+    age\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07me\
+    ssage\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"2\n\x13DefineDevi\
+    ceRequest\x12\x1b\n\tdevice_id\x18\x01\x20\x01(\x05R\x08deviceId\"\x83\
+    \x03\n\x14DefineDeviceResponse\x12L\n\x0esuccess_result\x18\x01\x20\x01(\
+    \x0b2#.DefineDeviceResponse.SuccessResultH\0R\rsuccessResult\x12F\n\x0ce\
+    rror_result\x18\x02\x20\x01(\x0b2!.DefineDeviceResponse.ErrorResultH\0R\
+    \x0berrorResult\x12L\n\x0efailure_result\x18\x03\x20\x01(\x0b2#.DefineDe\
+    viceResponse.FailureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\
     \x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\
     \x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResu\
     lt\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\
-    \"6\n\x17RemoveDeviceByIdRequest\x12\x1b\n\tdevice_id\x18\x01\x20\x01(\
-    \x05R\x08deviceId\"\x93\x03\n\x18RemoveDeviceByIdResponse\x12P\n\x0esucc\
-    ess_result\x18\x01\x20\x01(\x0b2'.RemoveDeviceByIdResponse.SuccessResult\
-    H\0R\rsuccessResult\x12J\n\x0cerror_result\x18\x02\x20\x01(\x0b2%.Remove\
-    DeviceByIdResponse.ErrorResultH\0R\x0berrorResult\x12P\n\x0efailure_resu\
-    lt\x18\x03\x20\x01(\x0b2'.RemoveDeviceByIdResponse.FailureResultH\0R\rfa\
-    ilureResult\x1a)\n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\
-    \tR\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\
-    \x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\
-    \x20\x01(\tR\x07messageB\x08\n\x06result\"\x1c\n\x1aGetDefinedModifiersR\
-    equest\"\xd0\x03\n\x1bGetDefinedModifiersResponse\x12S\n\x0esuccess_resu\
-    lt\x18\x01\x20\x01(\x0b2*.GetDefinedModifiersResponse.SuccessResultH\0R\
-    \rsuccessResult\x12M\n\x0cerror_result\x18\x02\x20\x01(\x0b2(.GetDefined\
-    ModifiersResponse.ErrorResultH\0R\x0berrorResult\x12S\n\x0efailure_resul\
-    t\x18\x03\x20\x01(\x0b2*.GetDefinedModifiersResponse.FailureResultH\0R\r\
-    failureResult\x1aZ\n\rSuccessResult\x12I\n\x15modifier_descriptions\x18\
-    \x01\x20\x03(\x0b2\x14.ModifierDescriptionR\x14modifierDescriptions\x1a'\
-    \n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\
-    \x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messa\
-    geB\x08\n\x06result\"I\n\x15DefineModifierRequest\x120\n\x08modifier\x18\
-    \x01\x20\x01(\x0b2\x14.ModifierDescriptionR\x08modifier\"\x8b\x03\n\x16D\
-    efineModifierResponse\x12N\n\x0esuccess_result\x18\x01\x20\x01(\x0b2%.De\
-    fineModifierResponse.SuccessResultH\0R\rsuccessResult\x12H\n\x0cerror_re\
-    sult\x18\x02\x20\x01(\x0b2#.DefineModifierResponse.ErrorResultH\0R\x0ber\
-    rorResult\x12N\n\x0efailure_result\x18\x03\x20\x01(\x0b2%.DefineModifier\
-    Response.FailureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\x18\
-    \n\x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\x12\
-    \x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\
-    \x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"@\
-    \n\x15RemoveModifierRequest\x12'\n\x0cmodifier_key\x18\x01\x20\x01(\x0b2\
-    \x04.KeyR\x0bmodifierKey\"\x8b\x03\n\x16RemoveModifierResponse\x12N\n\
-    \x0esuccess_result\x18\x01\x20\x01(\x0b2%.RemoveModifierResponse.Success\
-    ResultH\0R\rsuccessResult\x12H\n\x0cerror_result\x18\x02\x20\x01(\x0b2#.\
-    RemoveModifierResponse.ErrorResultH\0R\x0berrorResult\x12N\n\x0efailure_\
-    result\x18\x03\x20\x01(\x0b2%.RemoveModifierResponse.FailureResultH\0R\r\
-    failureResult\x1a)\n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01\
-    (\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\
-    \x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\
-    \x20\x01(\tR\x07messageB\x08\n\x06result\"\x1a\n\x18GetDefinedActionsReq\
-    uest\"\xb0\x03\n\x19GetDefinedActionsResponse\x12Q\n\x0esuccess_result\
-    \x18\x01\x20\x01(\x0b2(.GetDefinedActionsResponse.SuccessResultH\0R\rsuc\
-    cessResult\x12K\n\x0cerror_result\x18\x02\x20\x01(\x0b2&.GetDefinedActio\
-    nsResponse.ErrorResultH\0R\x0berrorResult\x12Q\n\x0efailure_result\x18\
-    \x03\x20\x01(\x0b2(.GetDefinedActionsResponse.FailureResultH\0R\rfailure\
-    Result\x1aB\n\rSuccessResult\x121\n\rnamed_actions\x18\x01\x20\x03(\x0b2\
-    \x0c.NamedActionR\x0cnamedActions\x1a'\n\x0bErrorResult\x12\x18\n\x07mes\
-    sage\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07m\
-    essage\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\";\n\x13DefineAct\
-    ionRequest\x12$\n\x06action\x18\x01\x20\x01(\x0b2\x0c.NamedActionR\x06ac\
-    tion\"\x83\x03\n\x14DefineActionResponse\x12L\n\x0esuccess_result\x18\
-    \x01\x20\x01(\x0b2#.DefineActionResponse.SuccessResultH\0R\rsuccessResul\
-    t\x12F\n\x0cerror_result\x18\x02\x20\x01(\x0b2!.DefineActionResponse.Err\
-    orResultH\0R\x0berrorResult\x12L\n\x0efailure_result\x18\x03\x20\x01(\
-    \x0b2#.DefineActionResponse.FailureResultH\0R\rfailureResult\x1a)\n\rSuc\
-    cessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\
-    \x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\
-    \n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\
-    \x08\n\x06result\"6\n\x13RemoveActionRequest\x12\x1f\n\x0baction_name\
-    \x18\x01\x20\x01(\tR\nactionName\"\x83\x03\n\x14RemoveActionResponse\x12\
-    L\n\x0esuccess_result\x18\x01\x20\x01(\x0b2#.RemoveActionResponse.Succes\
+    \"<\n\x19RemoveDeviceByPathRequest\x12\x1f\n\x0bdevice_path\x18\x01\x20\
+    \x01(\tR\ndevicePath\"\x9b\x03\n\x1aRemoveDeviceByPathResponse\x12R\n\
+    \x0esuccess_result\x18\x01\x20\x01(\x0b2).RemoveDeviceByPathResponse.Suc\
+    cessResultH\0R\rsuccessResult\x12L\n\x0cerror_result\x18\x02\x20\x01(\
+    \x0b2'.RemoveDeviceByPathResponse.ErrorResultH\0R\x0berrorResult\x12R\n\
+    \x0efailure_result\x18\x03\x20\x01(\x0b2).RemoveDeviceByPathResponse.Fai\
+    lureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\x18\n\x07message\
+    \x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07messa\
+    ge\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07mes\
+    sage\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"<\n\x19RemoveDevic\
+    eByNameRequest\x12\x1f\n\x0bdevice_name\x18\x01\x20\x01(\tR\ndeviceName\
+    \"\x9b\x03\n\x1aRemoveDeviceByNameResponse\x12R\n\x0esuccess_result\x18\
+    \x01\x20\x01(\x0b2).RemoveDeviceByNameResponse.SuccessResultH\0R\rsucces\
+    sResult\x12L\n\x0cerror_result\x18\x02\x20\x01(\x0b2'.RemoveDeviceByName\
+    Response.ErrorResultH\0R\x0berrorResult\x12R\n\x0efailure_result\x18\x03\
+    \x20\x01(\x0b2).RemoveDeviceByNameResponse.FailureResultH\0R\rfailureRes\
+    ult\x1a)\n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07me\
+    ssage\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07\
+    message\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\
+    \x07messageB\x08\n\x06result\"6\n\x17RemoveDeviceByIdRequest\x12\x1b\n\t\
+    device_id\x18\x01\x20\x01(\x05R\x08deviceId\"\x93\x03\n\x18RemoveDeviceB\
+    yIdResponse\x12P\n\x0esuccess_result\x18\x01\x20\x01(\x0b2'.RemoveDevice\
+    ByIdResponse.SuccessResultH\0R\rsuccessResult\x12J\n\x0cerror_result\x18\
+    \x02\x20\x01(\x0b2%.RemoveDeviceByIdResponse.ErrorResultH\0R\x0berrorRes\
+    ult\x12P\n\x0efailure_result\x18\x03\x20\x01(\x0b2'.RemoveDeviceByIdResp\
+    onse.FailureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\x18\n\
+    \x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\
+    \n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\
+    \x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"\x1c\
+    \n\x1aGetDefinedModifiersRequest\"\xd0\x03\n\x1bGetDefinedModifiersRespo\
+    nse\x12S\n\x0esuccess_result\x18\x01\x20\x01(\x0b2*.GetDefinedModifiersR\
+    esponse.SuccessResultH\0R\rsuccessResult\x12M\n\x0cerror_result\x18\x02\
+    \x20\x01(\x0b2(.GetDefinedModifiersResponse.ErrorResultH\0R\x0berrorResu\
+    lt\x12S\n\x0efailure_result\x18\x03\x20\x01(\x0b2*.GetDefinedModifiersRe\
+    sponse.FailureResultH\0R\rfailureResult\x1aZ\n\rSuccessResult\x12I\n\x15\
+    modifier_descriptions\x18\x01\x20\x03(\x0b2\x14.ModifierDescriptionR\x14\
+    modifierDescriptions\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\
+    \x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\
+    \x01\x20\x01(\tR\x07messageB\x08\n\x06result\"I\n\x15DefineModifierReque\
+    st\x120\n\x08modifier\x18\x01\x20\x01(\x0b2\x14.ModifierDescriptionR\x08\
+    modifier\"\x8b\x03\n\x16DefineModifierResponse\x12N\n\x0esuccess_result\
+    \x18\x01\x20\x01(\x0b2%.DefineModifierResponse.SuccessResultH\0R\rsucces\
+    sResult\x12H\n\x0cerror_result\x18\x02\x20\x01(\x0b2#.DefineModifierResp\
+    onse.ErrorResultH\0R\x0berrorResult\x12N\n\x0efailure_result\x18\x03\x20\
+    \x01(\x0b2%.DefineModifierResponse.FailureResultH\0R\rfailureResult\x1a)\
+    \n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\
+    \x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messa\
+    ge\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07mes\
+    sageB\x08\n\x06result\"@\n\x15RemoveModifierRequest\x12'\n\x0cmodifier_k\
+    ey\x18\x01\x20\x01(\x0b2\x04.KeyR\x0bmodifierKey\"\x8b\x03\n\x16RemoveMo\
+    difierResponse\x12N\n\x0esuccess_result\x18\x01\x20\x01(\x0b2%.RemoveMod\
+    ifierResponse.SuccessResultH\0R\rsuccessResult\x12H\n\x0cerror_result\
+    \x18\x02\x20\x01(\x0b2#.RemoveModifierResponse.ErrorResultH\0R\x0berrorR\
+    esult\x12N\n\x0efailure_result\x18\x03\x20\x01(\x0b2%.RemoveModifierResp\
+    onse.FailureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\x18\n\
+    \x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\
+    \n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\
+    \x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"\x1a\
+    \n\x18GetDefinedActionsRequest\"\xb0\x03\n\x19GetDefinedActionsResponse\
+    \x12Q\n\x0esuccess_result\x18\x01\x20\x01(\x0b2(.GetDefinedActionsRespon\
+    se.SuccessResultH\0R\rsuccessResult\x12K\n\x0cerror_result\x18\x02\x20\
+    \x01(\x0b2&.GetDefinedActionsResponse.ErrorResultH\0R\x0berrorResult\x12\
+    Q\n\x0efailure_result\x18\x03\x20\x01(\x0b2(.GetDefinedActionsResponse.F\
+    ailureResultH\0R\rfailureResult\x1aB\n\rSuccessResult\x121\n\rnamed_acti\
+    ons\x18\x01\x20\x03(\x0b2\x0c.NamedActionR\x0cnamedActions\x1a'\n\x0bErr\
+    orResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFai\
+    lureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\
+    \x06result\";\n\x13DefineActionRequest\x12$\n\x06action\x18\x01\x20\x01(\
+    \x0b2\x0c.NamedActionR\x06action\"\x83\x03\n\x14DefineActionResponse\x12\
+    L\n\x0esuccess_result\x18\x01\x20\x01(\x0b2#.DefineActionResponse.Succes\
     sResultH\0R\rsuccessResult\x12F\n\x0cerror_result\x18\x02\x20\x01(\x0b2!\
-    .RemoveActionResponse.ErrorResultH\0R\x0berrorResult\x12L\n\x0efailure_r\
-    esult\x18\x03\x20\x01(\x0b2#.RemoveActionResponse.FailureResultH\0R\rfai\
+    .DefineActionResponse.ErrorResultH\0R\x0berrorResult\x12L\n\x0efailure_r\
+    esult\x18\x03\x20\x01(\x0b2#.DefineActionResponse.FailureResultH\0R\rfai\
     lureResult\x1a)\n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\t\
     R\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\
     \tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\
-    \x01(\tR\x07messageB\x08\n\x06result\"\x1b\n\x19GetDefinedMappingsReques\
-    t\"\xa7\x03\n\x1aGetDefinedMappingsResponse\x12R\n\x0esuccess_result\x18\
-    \x01\x20\x01(\x0b2).GetDefinedMappingsResponse.SuccessResultH\0R\rsucces\
-    sResult\x12L\n\x0cerror_result\x18\x02\x20\x01(\x0b2'.GetDefinedMappings\
-    Response.ErrorResultH\0R\x0berrorResult\x12R\n\x0efailure_result\x18\x03\
-    \x20\x01(\x0b2).GetDefinedMappingsResponse.FailureResultH\0R\rfailureRes\
-    ult\x1a5\n\rSuccessResult\x12$\n\x08mappings\x18\x01\x20\x03(\x0b2\x08.M\
-    appingR\x08mappings\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\
-    \x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\
-    \x01\x20\x01(\tR\x07messageB\x08\n\x06result\":\n\x14DefineMappingReques\
-    t\x12\"\n\x07mapping\x18\x01\x20\x01(\x0b2\x08.MappingR\x07mapping\"\x87\
-    \x03\n\x15DefineMappingResponse\x12M\n\x0esuccess_result\x18\x01\x20\x01\
-    (\x0b2$.DefineMappingResponse.SuccessResultH\0R\rsuccessResult\x12G\n\
-    \x0cerror_result\x18\x02\x20\x01(\x0b2\".DefineMappingResponse.ErrorResu\
-    ltH\0R\x0berrorResult\x12M\n\x0efailure_result\x18\x03\x20\x01(\x0b2$.De\
-    fineMappingResponse.FailureResultH\0R\rfailureResult\x1a)\n\rSuccessResu\
-    lt\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorRe\
-    sult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailure\
-    Result\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06res\
-    ult\"a\n\x14ChangeMappingRequest\x12(\n\nkey_chords\x18\x01\x20\x03(\x0b\
-    2\t.KeyChordR\tkeyChords\x12\x1f\n\x06action\x18\x02\x20\x01(\x0b2\x07.A\
-    ctionR\x06action\"\x87\x03\n\x15ChangeMappingResponse\x12M\n\x0esuccess_\
-    result\x18\x01\x20\x01(\x0b2$.ChangeMappingResponse.SuccessResultH\0R\rs\
-    uccessResult\x12G\n\x0cerror_result\x18\x02\x20\x01(\x0b2\".ChangeMappin\
-    gResponse.ErrorResultH\0R\x0berrorResult\x12M\n\x0efailure_result\x18\
-    \x03\x20\x01(\x0b2$.ChangeMappingResponse.FailureResultH\0R\rfailureResu\
-    lt\x1a)\n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07mes\
-    sage\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07m\
-    essage\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\
-    \x07messageB\x08\n\x06result\"@\n\x14RemoveMappingRequest\x12(\n\nkey_ch\
-    ords\x18\x01\x20\x03(\x0b2\t.KeyChordR\tkeyChords\"\x87\x03\n\x15RemoveM\
-    appingResponse\x12M\n\x0esuccess_result\x18\x01\x20\x01(\x0b2$.RemoveMap\
-    pingResponse.SuccessResultH\0R\rsuccessResult\x12G\n\x0cerror_result\x18\
-    \x02\x20\x01(\x0b2\".RemoveMappingResponse.ErrorResultH\0R\x0berrorResul\
-    t\x12M\n\x0efailure_result\x18\x03\x20\x01(\x0b2$.RemoveMappingResponse.\
-    FailureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\x18\n\x07mess\
-    age\x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07me\
-    ssage\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07\
-    message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"\x14\n\x12IsLis\
-    teningRequest\"\x88\x03\n\x13IsListeningResponse\x12K\n\x0esuccess_resul\
-    t\x18\x01\x20\x01(\x0b2\".IsListeningResponse.SuccessResultH\0R\rsuccess\
-    Result\x12E\n\x0cerror_result\x18\x02\x20\x01(\x0b2\x20.IsListeningRespo\
-    nse.ErrorResultH\0R\x0berrorResult\x12K\n\x0efailure_result\x18\x03\x20\
-    \x01(\x0b2\".IsListeningResponse.FailureResultH\0R\rfailureResult\x1a2\n\
-    \rSuccessResult\x12!\n\x0cis_listening\x18\x01\x20\x01(\x08R\x0bisListen\
-    ing\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07me\
-    ssage\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07\
-    messageB\x08\n\x06result\"\x17\n\x15StartListeningRequest\"\x8b\x03\n\
-    \x16StartListeningResponse\x12N\n\x0esuccess_result\x18\x01\x20\x01(\x0b\
-    2%.StartListeningResponse.SuccessResultH\0R\rsuccessResult\x12H\n\x0cerr\
-    or_result\x18\x02\x20\x01(\x0b2#.StartListeningResponse.ErrorResultH\0R\
-    \x0berrorResult\x12N\n\x0efailure_result\x18\x03\x20\x01(\x0b2%.StartLis\
-    teningResponse.FailureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\
-    \x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResu\
-    lt\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureRe\
-    sult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06resul\
-    t\"\x16\n\x14StopListeningRequest\"\x87\x03\n\x15StopListeningResponse\
-    \x12M\n\x0esuccess_result\x18\x01\x20\x01(\x0b2$.StopListeningResponse.S\
-    uccessResultH\0R\rsuccessResult\x12G\n\x0cerror_result\x18\x02\x20\x01(\
-    \x0b2\".StopListeningResponse.ErrorResultH\0R\x0berrorResult\x12M\n\x0ef\
-    ailure_result\x18\x03\x20\x01(\x0b2$.StopListeningResponse.FailureResult\
-    H\0R\rfailureResult\x1a)\n\rSuccessResult\x12\x18\n\x07message\x18\x01\
-    \x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\
-    \x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07message\
-    \x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"\xfb\x0c\n\x07Request\
-    \x12@\n\x11handshake_request\x18\x01\x20\x01(\x0b2\x11.HandshakeRequestH\
-    \0R\x10handshakeRequest\x12D\n\x13get_devices_request\x18\x02\x20\x01(\
-    \x0b2\x12.GetDevicesRequestH\0R\x11getDevicesRequest\x12G\n\x14execute_c\
-    ode_request\x18\x03\x20\x01(\x0b2\x13.ExecuteCodeRequestH\0R\x12executeC\
-    odeRequest\x12J\n\x15define_device_request\x18\x04\x20\x01(\x0b2\x14.Def\
-    ineDeviceRequestH\0R\x13defineDeviceRequest\x12^\n\x1dremove_device_by_p\
-    ath_request\x18\x05\x20\x01(\x0b2\x1a.RemoveDeviceByPathRequestH\0R\x19r\
-    emoveDeviceByPathRequest\x12^\n\x1dremove_device_by_name_request\x18\x06\
-    \x20\x01(\x0b2\x1a.RemoveDeviceByNameRequestH\0R\x19removeDeviceByNameRe\
-    quest\x12X\n\x1bremove_device_by_id_request\x18\x07\x20\x01(\x0b2\x18.Re\
-    moveDeviceByIdRequestH\0R\x17removeDeviceByIdRequest\x12`\n\x1dget_defin\
-    ed_modifiers_request\x18\x08\x20\x01(\x0b2\x1b.GetDefinedModifiersReques\
-    tH\0R\x1agetDefinedModifiersRequest\x12P\n\x17define_modifier_request\
-    \x18\t\x20\x01(\x0b2\x16.DefineModifierRequestH\0R\x15defineModifierRequ\
-    est\x12P\n\x17remove_modifier_request\x18\n\x20\x01(\x0b2\x16.RemoveModi\
-    fierRequestH\0R\x15removeModifierRequest\x12Z\n\x1bget_defined_actions_r\
-    equest\x18\x0b\x20\x01(\x0b2\x19.GetDefinedActionsRequestH\0R\x18getDefi\
-    nedActionsRequest\x12J\n\x15define_action_request\x18\x0c\x20\x01(\x0b2\
-    \x14.DefineActionRequestH\0R\x13defineActionRequest\x12J\n\x15remove_act\
-    ion_request\x18\r\x20\x01(\x0b2\x14.RemoveActionRequestH\0R\x13removeAct\
-    ionRequest\x12]\n\x1cget_defined_mappings_request\x18\x0e\x20\x01(\x0b2\
-    \x1a.GetDefinedMappingsRequestH\0R\x19getDefinedMappingsRequest\x12M\n\
-    \x16define_mapping_request\x18\x0f\x20\x01(\x0b2\x15.DefineMappingReques\
-    tH\0R\x14defineMappingRequest\x12M\n\x16change_mapping_request\x18\x10\
-    \x20\x01(\x0b2\x15.ChangeMappingRequestH\0R\x14changeMappingRequest\x12M\
-    \n\x16remove_mapping_request\x18\x11\x20\x01(\x0b2\x15.RemoveMappingRequ\
-    estH\0R\x14removeMappingRequest\x12G\n\x14is_listening_request\x18\x12\
-    \x20\x01(\x0b2\x13.IsListeningRequestH\0R\x12isListeningRequest\x12P\n\
-    \x17start_listening_request\x18\x13\x20\x01(\x0b2\x16.StartListeningRequ\
-    estH\0R\x15startListeningRequest\x12M\n\x16stop_listening_request\x18\
-    \x14\x20\x01(\x0b2\x15.StopListeningRequestH\0R\x14stopListeningRequestB\
-    \t\n\x07request\"\xb9\r\n\x08Response\x12C\n\x12handshake_response\x18\
-    \x01\x20\x01(\x0b2\x12.HandshakeResponseH\0R\x11handshakeResponse\x12G\n\
-    \x14get_devices_response\x18\x02\x20\x01(\x0b2\x13.GetDevicesResponseH\0\
-    R\x12getDevicesResponse\x12J\n\x15execute_code_response\x18\x03\x20\x01(\
-    \x0b2\x14.ExecuteCodeResponseH\0R\x13executeCodeResponse\x12M\n\x16defin\
-    e_device_response\x18\x04\x20\x01(\x0b2\x15.DefineDeviceResponseH\0R\x14\
-    defineDeviceResponse\x12a\n\x1eremove_device_by_path_response\x18\x05\
-    \x20\x01(\x0b2\x1b.RemoveDeviceByPathResponseH\0R\x1aremoveDeviceByPathR\
-    esponse\x12a\n\x1eremove_device_by_name_response\x18\x06\x20\x01(\x0b2\
-    \x1b.RemoveDeviceByNameResponseH\0R\x1aremoveDeviceByNameResponse\x12[\n\
-    \x1cremove_device_by_id_response\x18\x07\x20\x01(\x0b2\x19.RemoveDeviceB\
-    yIdResponseH\0R\x18removeDeviceByIdResponse\x12c\n\x1eget_defined_modifi\
-    ers_response\x18\x08\x20\x01(\x0b2\x1c.GetDefinedModifiersResponseH\0R\
-    \x1bgetDefinedModifiersResponse\x12S\n\x18define_modifier_response\x18\t\
-    \x20\x01(\x0b2\x17.DefineModifierResponseH\0R\x16defineModifierResponse\
-    \x12S\n\x18remove_modifier_response\x18\n\x20\x01(\x0b2\x17.RemoveModifi\
-    erResponseH\0R\x16removeModifierResponse\x12]\n\x1cget_defined_actions_r\
-    esponse\x18\x0b\x20\x01(\x0b2\x1a.GetDefinedActionsResponseH\0R\x19getDe\
-    finedActionsResponse\x12M\n\x16define_action_response\x18\x0c\x20\x01(\
-    \x0b2\x15.DefineActionResponseH\0R\x14defineActionResponse\x12M\n\x16rem\
-    ove_action_response\x18\r\x20\x01(\x0b2\x15.RemoveActionResponseH\0R\x14\
-    removeActionResponse\x12`\n\x1dget_defined_mappings_response\x18\x0e\x20\
-    \x01(\x0b2\x1b.GetDefinedMappingsResponseH\0R\x1agetDefinedMappingsRespo\
-    nse\x12P\n\x17define_mapping_response\x18\x0f\x20\x01(\x0b2\x16.DefineMa\
-    ppingResponseH\0R\x15defineMappingResponse\x12P\n\x17change_mapping_resp\
-    onse\x18\x10\x20\x01(\x0b2\x16.ChangeMappingResponseH\0R\x15changeMappin\
-    gResponse\x12P\n\x17remove_mapping_response\x18\x11\x20\x01(\x0b2\x16.Re\
-    moveMappingResponseH\0R\x15removeMappingResponse\x12J\n\x15is_listening_\
-    response\x18\x12\x20\x01(\x0b2\x14.IsListeningResponseH\0R\x13isListenin\
-    gResponse\x12S\n\x18start_listening_response\x18\x13\x20\x01(\x0b2\x17.S\
-    tartListeningResponseH\0R\x16startListeningResponse\x12P\n\x17stop_liste\
-    ning_response\x18\x14\x20\x01(\x0b2\x16.StopListeningResponseH\0R\x15sto\
-    pListeningResponseB\n\n\x08responseb\x06proto3\
+    \x01(\tR\x07messageB\x08\n\x06result\"6\n\x13RemoveActionRequest\x12\x1f\
+    \n\x0baction_name\x18\x01\x20\x01(\tR\nactionName\"\x83\x03\n\x14RemoveA\
+    ctionResponse\x12L\n\x0esuccess_result\x18\x01\x20\x01(\x0b2#.RemoveActi\
+    onResponse.SuccessResultH\0R\rsuccessResult\x12F\n\x0cerror_result\x18\
+    \x02\x20\x01(\x0b2!.RemoveActionResponse.ErrorResultH\0R\x0berrorResult\
+    \x12L\n\x0efailure_result\x18\x03\x20\x01(\x0b2#.RemoveActionResponse.Fa\
+    ilureResultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\x18\n\x07messag\
+    e\x18\x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07mess\
+    age\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07me\
+    ssage\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"\x1b\n\x19GetDefi\
+    nedMappingsRequest\"\xa7\x03\n\x1aGetDefinedMappingsResponse\x12R\n\x0es\
+    uccess_result\x18\x01\x20\x01(\x0b2).GetDefinedMappingsResponse.SuccessR\
+    esultH\0R\rsuccessResult\x12L\n\x0cerror_result\x18\x02\x20\x01(\x0b2'.G\
+    etDefinedMappingsResponse.ErrorResultH\0R\x0berrorResult\x12R\n\x0efailu\
+    re_result\x18\x03\x20\x01(\x0b2).GetDefinedMappingsResponse.FailureResul\
+    tH\0R\rfailureResult\x1a5\n\rSuccessResult\x12$\n\x08mappings\x18\x01\
+    \x20\x03(\x0b2\x08.MappingR\x08mappings\x1a'\n\x0bErrorResult\x12\x18\n\
+    \x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\
+    \n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\":\n\x14De\
+    fineMappingRequest\x12\"\n\x07mapping\x18\x01\x20\x01(\x0b2\x08.MappingR\
+    \x07mapping\"\x87\x03\n\x15DefineMappingResponse\x12M\n\x0esuccess_resul\
+    t\x18\x01\x20\x01(\x0b2$.DefineMappingResponse.SuccessResultH\0R\rsucces\
+    sResult\x12G\n\x0cerror_result\x18\x02\x20\x01(\x0b2\".DefineMappingResp\
+    onse.ErrorResultH\0R\x0berrorResult\x12M\n\x0efailure_result\x18\x03\x20\
+    \x01(\x0b2$.DefineMappingResponse.FailureResultH\0R\rfailureResult\x1a)\
+    \n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\
+    \x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messa\
+    ge\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07mes\
+    sageB\x08\n\x06result\"a\n\x14ChangeMappingRequest\x12(\n\nkey_chords\
+    \x18\x01\x20\x03(\x0b2\t.KeyChordR\tkeyChords\x12\x1f\n\x06action\x18\
+    \x02\x20\x01(\x0b2\x07.ActionR\x06action\"\x87\x03\n\x15ChangeMappingRes\
+    ponse\x12M\n\x0esuccess_result\x18\x01\x20\x01(\x0b2$.ChangeMappingRespo\
+    nse.SuccessResultH\0R\rsuccessResult\x12G\n\x0cerror_result\x18\x02\x20\
+    \x01(\x0b2\".ChangeMappingResponse.ErrorResultH\0R\x0berrorResult\x12M\n\
+    \x0efailure_result\x18\x03\x20\x01(\x0b2$.ChangeMappingResponse.FailureR\
+    esultH\0R\rfailureResult\x1a)\n\rSuccessResult\x12\x18\n\x07message\x18\
+    \x01\x20\x01(\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07message\
+    \x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07messa\
+    ge\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"@\n\x14RemoveMapping\
+    Request\x12(\n\nkey_chords\x18\x01\x20\x03(\x0b2\t.KeyChordR\tkeyChords\
+    \"\x87\x03\n\x15RemoveMappingResponse\x12M\n\x0esuccess_result\x18\x01\
+    \x20\x01(\x0b2$.RemoveMappingResponse.SuccessResultH\0R\rsuccessResult\
+    \x12G\n\x0cerror_result\x18\x02\x20\x01(\x0b2\".RemoveMappingResponse.Er\
+    rorResultH\0R\x0berrorResult\x12M\n\x0efailure_result\x18\x03\x20\x01(\
+    \x0b2$.RemoveMappingResponse.FailureResultH\0R\rfailureResult\x1a)\n\rSu\
+    ccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\
+    \x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\
+    \n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\
+    \x08\n\x06result\"\x14\n\x12IsListeningRequest\"\x88\x03\n\x13IsListenin\
+    gResponse\x12K\n\x0esuccess_result\x18\x01\x20\x01(\x0b2\".IsListeningRe\
+    sponse.SuccessResultH\0R\rsuccessResult\x12E\n\x0cerror_result\x18\x02\
+    \x20\x01(\x0b2\x20.IsListeningResponse.ErrorResultH\0R\x0berrorResult\
+    \x12K\n\x0efailure_result\x18\x03\x20\x01(\x0b2\".IsListeningResponse.Fa\
+    ilureResultH\0R\rfailureResult\x1a2\n\rSuccessResult\x12!\n\x0cis_listen\
+    ing\x18\x01\x20\x01(\x08R\x0bisListening\x1a'\n\x0bErrorResult\x12\x18\n\
+    \x07message\x18\x01\x20\x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\
+    \n\x07message\x18\x01\x20\x01(\tR\x07messageB\x08\n\x06result\"\x17\n\
+    \x15StartListeningRequest\"\x8b\x03\n\x16StartListeningResponse\x12N\n\
+    \x0esuccess_result\x18\x01\x20\x01(\x0b2%.StartListeningResponse.Success\
+    ResultH\0R\rsuccessResult\x12H\n\x0cerror_result\x18\x02\x20\x01(\x0b2#.\
+    StartListeningResponse.ErrorResultH\0R\x0berrorResult\x12N\n\x0efailure_\
+    result\x18\x03\x20\x01(\x0b2%.StartListeningResponse.FailureResultH\0R\r\
+    failureResult\x1a)\n\rSuccessResult\x12\x18\n\x07message\x18\x01\x20\x01\
+    (\tR\x07message\x1a'\n\x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\
+    \x01(\tR\x07message\x1a)\n\rFailureResult\x12\x18\n\x07message\x18\x01\
+    \x20\x01(\tR\x07messageB\x08\n\x06result\"\x16\n\x14StopListeningRequest\
+    \"\x87\x03\n\x15StopListeningResponse\x12M\n\x0esuccess_result\x18\x01\
+    \x20\x01(\x0b2$.StopListeningResponse.SuccessResultH\0R\rsuccessResult\
+    \x12G\n\x0cerror_result\x18\x02\x20\x01(\x0b2\".StopListeningResponse.Er\
+    rorResultH\0R\x0berrorResult\x12M\n\x0efailure_result\x18\x03\x20\x01(\
+    \x0b2$.StopListeningResponse.FailureResultH\0R\rfailureResult\x1a)\n\rSu\
+    ccessResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a'\n\
+    \x0bErrorResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07message\x1a)\
+    \n\rFailureResult\x12\x18\n\x07message\x18\x01\x20\x01(\tR\x07messageB\
+    \x08\n\x06result\"\xfb\x0c\n\x07Request\x12@\n\x11handshake_request\x18\
+    \x01\x20\x01(\x0b2\x11.HandshakeRequestH\0R\x10handshakeRequest\x12D\n\
+    \x13get_devices_request\x18\x02\x20\x01(\x0b2\x12.GetDevicesRequestH\0R\
+    \x11getDevicesRequest\x12G\n\x14execute_code_request\x18\x03\x20\x01(\
+    \x0b2\x13.ExecuteCodeRequestH\0R\x12executeCodeRequest\x12J\n\x15define_\
+    device_request\x18\x04\x20\x01(\x0b2\x14.DefineDeviceRequestH\0R\x13defi\
+    neDeviceRequest\x12^\n\x1dremove_device_by_path_request\x18\x05\x20\x01(\
+    \x0b2\x1a.RemoveDeviceByPathRequestH\0R\x19removeDeviceByPathRequest\x12\
+    ^\n\x1dremove_device_by_name_request\x18\x06\x20\x01(\x0b2\x1a.RemoveDev\
+    iceByNameRequestH\0R\x19removeDeviceByNameRequest\x12X\n\x1bremove_devic\
+    e_by_id_request\x18\x07\x20\x01(\x0b2\x18.RemoveDeviceByIdRequestH\0R\
+    \x17removeDeviceByIdRequest\x12`\n\x1dget_defined_modifiers_request\x18\
+    \x08\x20\x01(\x0b2\x1b.GetDefinedModifiersRequestH\0R\x1agetDefinedModif\
+    iersRequest\x12P\n\x17define_modifier_request\x18\t\x20\x01(\x0b2\x16.De\
+    fineModifierRequestH\0R\x15defineModifierRequest\x12P\n\x17remove_modifi\
+    er_request\x18\n\x20\x01(\x0b2\x16.RemoveModifierRequestH\0R\x15removeMo\
+    difierRequest\x12Z\n\x1bget_defined_actions_request\x18\x0b\x20\x01(\x0b\
+    2\x19.GetDefinedActionsRequestH\0R\x18getDefinedActionsRequest\x12J\n\
+    \x15define_action_request\x18\x0c\x20\x01(\x0b2\x14.DefineActionRequestH\
+    \0R\x13defineActionRequest\x12J\n\x15remove_action_request\x18\r\x20\x01\
+    (\x0b2\x14.RemoveActionRequestH\0R\x13removeActionRequest\x12]\n\x1cget_\
+    defined_mappings_request\x18\x0e\x20\x01(\x0b2\x1a.GetDefinedMappingsReq\
+    uestH\0R\x19getDefinedMappingsRequest\x12M\n\x16define_mapping_request\
+    \x18\x0f\x20\x01(\x0b2\x15.DefineMappingRequestH\0R\x14defineMappingRequ\
+    est\x12M\n\x16change_mapping_request\x18\x10\x20\x01(\x0b2\x15.ChangeMap\
+    pingRequestH\0R\x14changeMappingRequest\x12M\n\x16remove_mapping_request\
+    \x18\x11\x20\x01(\x0b2\x15.RemoveMappingRequestH\0R\x14removeMappingRequ\
+    est\x12G\n\x14is_listening_request\x18\x12\x20\x01(\x0b2\x13.IsListening\
+    RequestH\0R\x12isListeningRequest\x12P\n\x17start_listening_request\x18\
+    \x13\x20\x01(\x0b2\x16.StartListeningRequestH\0R\x15startListeningReques\
+    t\x12M\n\x16stop_listening_request\x18\x14\x20\x01(\x0b2\x15.StopListeni\
+    ngRequestH\0R\x14stopListeningRequestB\t\n\x07request\"\xb9\r\n\x08Respo\
+    nse\x12C\n\x12handshake_response\x18\x01\x20\x01(\x0b2\x12.HandshakeResp\
+    onseH\0R\x11handshakeResponse\x12G\n\x14get_devices_response\x18\x02\x20\
+    \x01(\x0b2\x13.GetDevicesResponseH\0R\x12getDevicesResponse\x12J\n\x15ex\
+    ecute_code_response\x18\x03\x20\x01(\x0b2\x14.ExecuteCodeResponseH\0R\
+    \x13executeCodeResponse\x12M\n\x16define_device_response\x18\x04\x20\x01\
+    (\x0b2\x15.DefineDeviceResponseH\0R\x14defineDeviceResponse\x12a\n\x1ere\
+    move_device_by_path_response\x18\x05\x20\x01(\x0b2\x1b.RemoveDeviceByPat\
+    hResponseH\0R\x1aremoveDeviceByPathResponse\x12a\n\x1eremove_device_by_n\
+    ame_response\x18\x06\x20\x01(\x0b2\x1b.RemoveDeviceByNameResponseH\0R\
+    \x1aremoveDeviceByNameResponse\x12[\n\x1cremove_device_by_id_response\
+    \x18\x07\x20\x01(\x0b2\x19.RemoveDeviceByIdResponseH\0R\x18removeDeviceB\
+    yIdResponse\x12c\n\x1eget_defined_modifiers_response\x18\x08\x20\x01(\
+    \x0b2\x1c.GetDefinedModifiersResponseH\0R\x1bgetDefinedModifiersResponse\
+    \x12S\n\x18define_modifier_response\x18\t\x20\x01(\x0b2\x17.DefineModifi\
+    erResponseH\0R\x16defineModifierResponse\x12S\n\x18remove_modifier_respo\
+    nse\x18\n\x20\x01(\x0b2\x17.RemoveModifierResponseH\0R\x16removeModifier\
+    Response\x12]\n\x1cget_defined_actions_response\x18\x0b\x20\x01(\x0b2\
+    \x1a.GetDefinedActionsResponseH\0R\x19getDefinedActionsResponse\x12M\n\
+    \x16define_action_response\x18\x0c\x20\x01(\x0b2\x15.DefineActionRespons\
+    eH\0R\x14defineActionResponse\x12M\n\x16remove_action_response\x18\r\x20\
+    \x01(\x0b2\x15.RemoveActionResponseH\0R\x14removeActionResponse\x12`\n\
+    \x1dget_defined_mappings_response\x18\x0e\x20\x01(\x0b2\x1b.GetDefinedMa\
+    ppingsResponseH\0R\x1agetDefinedMappingsResponse\x12P\n\x17define_mappin\
+    g_response\x18\x0f\x20\x01(\x0b2\x16.DefineMappingResponseH\0R\x15define\
+    MappingResponse\x12P\n\x17change_mapping_response\x18\x10\x20\x01(\x0b2\
+    \x16.ChangeMappingResponseH\0R\x15changeMappingResponse\x12P\n\x17remove\
+    _mapping_response\x18\x11\x20\x01(\x0b2\x16.RemoveMappingResponseH\0R\
+    \x15removeMappingResponse\x12J\n\x15is_listening_response\x18\x12\x20\
+    \x01(\x0b2\x14.IsListeningResponseH\0R\x13isListeningResponse\x12S\n\x18\
+    start_listening_response\x18\x13\x20\x01(\x0b2\x17.StartListeningRespons\
+    eH\0R\x16startListeningResponse\x12P\n\x17stop_listening_response\x18\
+    \x14\x20\x01(\x0b2\x16.StopListeningResponseH\0R\x15stopListeningRespons\
+    eB\n\n\x08responseb\x06proto3\
 ";
 
 static mut file_descriptor_proto_lazy: ::protobuf::lazy::Lazy<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::lazy::Lazy::INIT;
